@@ -4,6 +4,8 @@ export const generalSlice = createSlice({
   name: "general",
   initialState: {
     user: null,
+    expenses:[],
+    budgets:[]
   },
   reducers: {
     addUserInfo: (state, action) => {
@@ -12,6 +14,12 @@ export const generalSlice = createSlice({
     logout: (state) => {
       state.user = null;
     },
+    addExpense: (state,action) => {
+      state.expenses = [...state.expenses,action.payload];
+    },
+    setBudget: (state,action) => {
+      state.budgets = action.payload;
+    },
   },
 });
 
@@ -19,6 +27,8 @@ export const {
   
   addUserInfo,
   logout,
+  addExpense,
+  setBudget
   
 } = generalSlice.actions;
 
