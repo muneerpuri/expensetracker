@@ -2,6 +2,7 @@ import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Auth from './src/screens/Auth';
 import Dashboard from './src/screens/Dashboard';
+import Categories from './src/screens/Categories';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,9 +15,14 @@ const App = () => {
           options={{title: 'Welcome',headerShown:false}}
         />
         <Stack.Screen
-          name="Dashboard"
+          name="Categories"
+          component={Categories}
+          options={{title: 'Categories',headerShown:false}}
+        />
+        <Stack.Screen
+          name="Expenses"
           component={Dashboard}
-          options={{title: 'Dashboard',headerShown:false}}
+          options={{title: 'Expenses',headerShown:false}}
         />
       </Stack.Navigator>
   );

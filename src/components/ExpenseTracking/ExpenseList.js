@@ -1,24 +1,22 @@
 import React from 'react';
 import { View, Text, FlatList, Image, StyleSheet } from 'react-native';
-import { useSelector } from 'react-redux';
 import { Card } from 'react-native-paper';
 
-function ExpenseList() {
-  const expenses = useSelector(state => state.general.expenses);
+function ExpenseList({expenses}) {
 
   const renderExpenseItem = ({ item }) => (
     <Card style={styles.card}>
       <Card.Content>
-        <Text style={styles.amount}>₹ {item.amount}</Text>
-        <Text style={styles.category}>Category: {item.category}</Text>
-        <Text style={styles.description}>{item.description}</Text>
+        <Text style={styles.amount}>₹ {item.data().amount}</Text>
+        <Text style={styles.category}>Category: {item.data().category}</Text>
+        <Text style={styles.description}>{item.data().description}</Text>
         <Text style={styles.date}>
-          Date: {new Date(item.date).toLocaleDateString()}
+          Date: {new Date(item.data().date).toLocaleDateString()}
         </Text>
-        {item.image && (
+        {item.data().image && (
           <Image
-            source={{ uri: `data:image/jpeg;base64,${item.image}` }}
-            style={styles.image}
+            source={{ uri: `data:image/jpeg;base64,${item.data().image}` }}
+            style={styles.data().image}
           />
         )}
       </Card.Content>

@@ -56,7 +56,7 @@ function Auth() {
     try {
       const user = await auth().currentUser;
       if (user) {
-        navigation.navigate("Dashboard")
+        navigation.navigate("Categories")
         const { uid, email, displayName } = user;
         dispatch(addUserInfo({ uid, email, displayName }));
       }
